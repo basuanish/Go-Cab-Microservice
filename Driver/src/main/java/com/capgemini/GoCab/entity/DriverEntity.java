@@ -18,7 +18,7 @@ public class DriverEntity {
 		
 		@Id
 		@Column(name = "phone_number")
-		private int phoneNumber;
+		private String phoneNumber;
 
 		@Column(name = "car_type")
 		private String carType;
@@ -42,11 +42,11 @@ public class DriverEntity {
 			this.age = age;
 		}
 
-		public int getPhoneNumber() {
+		public String getPhoneNumber() {
 			return phoneNumber;
 		}
 
-		public void setPhoneNumber(int phoneNumber) {
+		public void setPhoneNumber(String phoneNumber) {
 			this.phoneNumber = phoneNumber;
 		}
 

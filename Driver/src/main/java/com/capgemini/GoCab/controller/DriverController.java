@@ -17,7 +17,7 @@ public class DriverController {
 	@Autowired
 	DriverService driverService;
 	
-	@PostMapping(path="/add")
+	@PostMapping(value="/add")
     public String addDriver(@RequestBody Driver driver) {
         return driverService.addDriver(driver);
     }

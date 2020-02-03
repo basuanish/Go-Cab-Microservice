@@ -4,7 +4,7 @@ public class Driver {
 
 	private String name;
 	private int age;
-	private int phoneNumber;
+	private String phoneNumber;
 	private String carType;
 	private String carNumber;
 	
@@ -14,7 +14,7 @@ public class Driver {
 	}
 
 
-	public Driver(String name, int age, int phoneNumber, String carType, String carNumber) {
+	public Driver(String name, int age, String phoneNumber, String carType, String carNumber) {
 		super();
 		this.name = name;
 		this.age = age;
@@ -44,12 +44,12 @@ public class Driver {
 	}
 
 
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
 
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 

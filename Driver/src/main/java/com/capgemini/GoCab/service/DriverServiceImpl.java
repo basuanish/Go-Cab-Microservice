@@ -1,11 +1,13 @@
 package com.capgemini.GoCab.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.capgemini.GoCab.dao.DriverDAO;
 import com.capgemini.GoCab.dto.Driver;
 import com.capgemini.GoCab.entity.DriverEntity;
 
+@Service
 public class DriverServiceImpl implements DriverService {
 	
 	@Autowired

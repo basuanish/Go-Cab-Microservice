@@ -1,13 +1,13 @@
-package com.capgemini.GoCab.Driver;
+package com.capgemini.GoCab;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DriverApplication {
+public class PaymentApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DriverApplication.class, args);
+		SpringApplication.run(PaymentApplication.class, args);
 	}
 
 }
