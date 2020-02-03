@@ -1,5 +1,5 @@
 package com.capgemini.GoCab.repository;
 
-public class LoginRepository {
+public interface LoginRepository {
 
 }
