@@ -1,5 +1,5 @@
 package com.capgemini.GoCab.repository;
 
-public class RiderRepository {
+public interface RiderRepository {
 
 }
