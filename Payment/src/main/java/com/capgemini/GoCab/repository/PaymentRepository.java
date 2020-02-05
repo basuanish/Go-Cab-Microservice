@@ -1,5 +1,8 @@
 package com.capgemini.GoCab.repository;
 
-public interface PaymentRepository {
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface PaymentRepository extends JpaRepository<Payment, String>{
 
 }
