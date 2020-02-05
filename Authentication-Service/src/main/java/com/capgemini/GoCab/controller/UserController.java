@@ -35,7 +35,7 @@ import com.capgemini.GoCab.security.JwtUtil;
 import com.capgemini.GoCab.service.JwtUserService;
 import com.capgemini.GoCab.service.UserService;
 
-//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(value ="/user")
 public class UserController {
