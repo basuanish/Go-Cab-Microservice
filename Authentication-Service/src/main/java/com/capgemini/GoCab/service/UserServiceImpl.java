@@ -44,8 +44,9 @@ public class UserServiceImpl implements UserService {
 	private ILoginDao loginDao;
 
 	@Override
-	public boolean createUser(User user) throws UserNotSavedException {
+	public String createUser(User user) throws UserNotSavedException {
 		
+		System.out.println(user);
 		String encodedPassword = passwordEncoder.encode(user.getUserPassword());
 		
 		// Only username and password will be saved into Login Table
@@ -72,7 +73,7 @@ public class UserServiceImpl implements UserService {
 		userEntity.setUserRole(user.getUserRole());
 		userDao.save(userEntity);
 		
-		return true;
+		return "User added";
 	}
 	
 	

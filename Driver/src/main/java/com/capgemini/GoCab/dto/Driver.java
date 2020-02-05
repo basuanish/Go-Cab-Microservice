@@ -5,20 +5,22 @@ public class Driver {
 	private String name;
 	private int age;
 	private String phoneNumber;
+	private String email;
 	private String carType;
 	private String carNumber;
-	
+	private String password;
 	
 	public Driver() {
 		
 	}
 
 
-	public Driver(String name, int age, String phoneNumber, String carType, String carNumber) {
+	public Driver(String name, int age, String phoneNumber, String email, String carType, String carNumber) {
 		super();
 		this.name = name;
 		this.age = age;
 		this.phoneNumber = phoneNumber;
+		this.email = email;
 		this.carType = carType;
 		this.carNumber = carNumber;
 	}
@@ -71,6 +73,26 @@ public class Driver {
 
 	public void setCarNumber(String carNumber) {
 		this.carNumber = carNumber;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	

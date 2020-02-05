@@ -22,7 +22,7 @@ import com.capgemini.GoCab.exception.UserNotSavedException;
 public interface UserService {
 	
 	//Create a user in database
-	boolean createUser(User user) throws UserNotSavedException, IOException;
+	String createUser(User user) throws UserNotSavedException, IOException;
 	
 	boolean updateUser(UserEntity user);
 	

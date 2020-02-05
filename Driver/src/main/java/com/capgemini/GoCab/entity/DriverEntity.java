@@ -19,7 +19,10 @@ public class DriverEntity {
 		@Id
 		@Column(name = "phone_number")
 		private String phoneNumber;
-
+		
+		@Column(name = "email")
+		private String email;
+		
 		@Column(name = "car_type")
 		private String carType;
 
@@ -65,6 +68,15 @@ public class DriverEntity {
 		public void setCarNumber(String carNumber) {
 			this.carNumber = carNumber;
 		}
+
+		public String getEmail() {
+			return email;
+		}
+
+		public void setEmail(String email) {
+			this.email = email;
+		}
+		
 		
 
 }

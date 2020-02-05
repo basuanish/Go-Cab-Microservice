@@ -20,6 +20,7 @@ public class DriverServiceImpl implements DriverService {
 		DriverEntity dE = new DriverEntity();
 		dE.setName(driver.getName());
 		dE.setAge(driver.getAge());
+		dE.setEmail(driver.getEmail());
 		dE.setCarNumber(driver.getCarNumber());
 		dE.setCarType(driver.getCarType());
 		dE.setPhoneNumber(driver.getPhoneNumber());
