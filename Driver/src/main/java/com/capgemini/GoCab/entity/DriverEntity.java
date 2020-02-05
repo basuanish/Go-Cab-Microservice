@@ -10,61 +10,62 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class DriverEntity {
 
-	@Id
-	@Column(name = "phone_number")
-	private int phoneNumber;
+		@Column(name = "Name")
+		private String name;
 
-	@Column(name = "Name")
-	private String name;
+		@Column(name = "Age")
+		private int age;
+		
+		@Id
+		@Column(name = "phone_number")
+		private String phoneNumber;
 
-	@Column(name = "Age")
-	private int age;
+		@Column(name = "car_type")
+		private String carType;
 
-	@Column(name = "car_type")
-	private String carType;
+		@Column(name = "Car_Number")
+		private String carNumber;
 
-	@Column(name = "Car_Number")
-	private String carNumber;
+		public String getName() {
+			return name;
+		}
 
-	public String getName() {
-		return name;
-	}
+		public void setName(String name) {
+			this.name = name;
+		}
 
-	public void setName(String name) {
-		this.name = name;
-	}
+		public int getAge() {
+			return age;
+		}
 
-	public int getAge() {
-		return age;
-	}
+		public void setAge(int age) {
+			this.age = age;
+		}
 
-	public void setAge(int age) {
-		this.age = age;
-	}
+		public String getPhoneNumber() {
+			return phoneNumber;
+		}
 
-	public int getPhoneNumber() {
-		return phoneNumber;
-	}
+		public void setPhoneNumber(String phoneNumber) {
+			this.phoneNumber = phoneNumber;
+		}
 
-	public void setPhoneNumber(int phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
+		public String getCarType() {
+			return carType;
+		}
 
-	public String getCarType() {
-		return carType;
-	}
+		public void setCarType(String carType) {
+			this.carType = carType;
+		}
 
-	public void setCarType(String carType) {
-		this.carType = carType;
-	}
+		public String getCarNumber() {
+			return carNumber;
+		}
 
-	public String getCarNumber() {
-		return carNumber;
-	}
-
-	public void setCarNumber(String carNumber) {
-		this.carNumber = carNumber;
-	}
+		public void setCarNumber(String carNumber) {
+			this.carNumber = carNumber;
+		}
+		
 
 }
 	
