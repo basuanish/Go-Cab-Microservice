@@ -77,7 +77,7 @@ public class UserController {
 
 	
 	@PostMapping(value="/create")
-	public boolean saveUser(@RequestBody User user) throws UserNotSavedException, IOException {
+	public String saveUser(@RequestBody User user) throws UserNotSavedException, IOException {
 		//System.out.println("hiii"+user);
 		return service.createUser(user);
 	}
