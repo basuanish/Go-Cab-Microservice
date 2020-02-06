@@ -12,24 +12,39 @@ public class RiderEntity {
 	@Id
 	private String phoneNumber;
 	private String name;
-	private String emailId;
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
+	private String email;
+	private String city;
+	private String zipcode;
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	public String getEmailId() {
-		return emailId;
+	public String getName() {
+		return name;
 	}
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
+	public void setName(String name) {
+		this.name = name;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getZipcode() {
+		return zipcode;
+	}
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
+	}
+	
 	
 }

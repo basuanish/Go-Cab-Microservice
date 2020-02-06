@@ -32,7 +32,6 @@ public class DriverController {
 	@PostMapping(value="/add")
     public String addDriver(@RequestBody Driver driver) {
 		User newUser = new User();
-		System.out.println(driver.getPassword());
 		newUser.setUserFullName(driver.getName());
 		newUser.setUserEmailAddress(driver.getEmail());
 		newUser.setUserMobileNo(driver.getPhoneNumber());

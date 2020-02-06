@@ -45,8 +45,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public String createUser(User user) throws UserNotSavedException {
-		
-		System.out.println(user);
 		String encodedPassword = passwordEncoder.encode(user.getUserPassword());
 		
 		// Only username and password will be saved into Login Table
