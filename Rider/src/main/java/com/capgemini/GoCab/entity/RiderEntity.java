@@ -12,7 +12,7 @@ public class RiderEntity {
 	@Id
 	private String phoneNumber;
 	private String name;
-	private String emailId;
+	private String email;
 	private String city;
 	private String zipcode;
 	public String getPhoneNumber() {
@@ -27,11 +27,11 @@ public class RiderEntity {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getEmailId() {
-		return emailId;
+	public String getEmail() {
+		return email;
 	}
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getCity() {
 		return city;
