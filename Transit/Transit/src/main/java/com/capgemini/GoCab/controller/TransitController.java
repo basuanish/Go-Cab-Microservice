@@ -1,28 +1,28 @@
-package Controller;
+package com.capgemini.GoCab.controller;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import Model.TransitModel;
-import Repository.TransitRepository;
+import com.capgemini.GoCab.model.TransitModel;
+import com.capgemini.GoCab.repository.TransitRepository;
 
 
-@CrossOrigin(origins="http://localhost:4200")
 @RequestMapping(path="/transit")
 @RestController
 public class TransitController {
 	
+	
 	@Autowired
 	private TransitRepository transitRepository ;
 	
-	@GetMapping(value="/search")
-	Iterable <TransitModel>findByQuery(@RequestParam("Sedan") String cab_type ,@RequestParam("Active")String status)
+	@GetMapping(path="/search")
+	List <TransitModel>findByQuery()
 	{
 		return transitRepository.findByCabTypeAndStatus("Sedan", "Active") ;
 	}
-
+			
 }
