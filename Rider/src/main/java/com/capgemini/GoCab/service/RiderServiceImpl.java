@@ -16,9 +16,9 @@ public class RiderServiceImpl implements RiderService {
 	
 	@Override
 	public String addRider(Rider rider) {
-		// TODO Auto-generated method stub
 		RiderEntity riderEntity=new RiderEntity();
-		riderEntity.setEmailId(rider.getEmailId());
+		System.out.println(rider);
+		riderEntity.setEmail(rider.getEmail());
 		riderEntity.setName(rider.getName());
 		riderEntity.setPhoneNumber(rider.getPhoneNumber());
 		riderEntity.setCity(rider.getCity());
