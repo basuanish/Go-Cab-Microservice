@@ -21,6 +21,8 @@ public class RiderServiceImpl implements RiderService {
 		riderEntity.setEmailId(rider.getEmailId());
 		riderEntity.setName(rider.getName());
 		riderEntity.setPhoneNumber(rider.getPhoneNumber());
+		riderEntity.setCity(rider.getCity());
+		riderEntity.setZipcode(rider.getZipcode());
 		riderDAO.save(riderEntity);
 		return "rider added" ;
 	}
