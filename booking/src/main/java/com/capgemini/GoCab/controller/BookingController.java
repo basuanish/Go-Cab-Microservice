@@ -12,8 +12,9 @@ import com.capgemini.GoCab.exceptions.BookingException;
 import com.capgemini.GoCab.service.BookingService;
 import com.capgemini.GoCab.constants.Constants;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping(Constants.controllerMapping)
+@RequestMapping(path="book")
 public class BookingController {
 
 	@Autowired
@@ -22,22 +23,6 @@ public class BookingController {
 	@Autowired
 	Booking booking;
 
-	@CrossOrigin(origins = "http://localhost:4200")
-	@PostMapping(Constants.createBookingMapping)
-	public String create(@RequestBody BookingInformation bookingInformation) {
-		JsonObject dataResponse = new JsonObject();
-		try {
-			System.out.println("inside controller");
-			booking = bookingService.createBooking(bookingInformation);
-			dataResponse.addProperty("success", true);
-			dataResponse.addProperty("message", "Booking Created Successfully");
-			dataResponse.addProperty("bookingId", booking.getBookingId().toString());
-			dataResponse.addProperty("price", booking.getTotalPrice());
-		} catch (BookingException e) {
-			System.out.println(e.getMessage());
-			dataResponse.addProperty("success", false);
-			dataResponse.addProperty("message", e.getMessage());
-		}
-		return dataResponse.toString();
-	}
+
+	
 }
