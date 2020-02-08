@@ -1,6 +1,6 @@
 package com.capgemini.GoCab.dto;
 
-public class Booking {
+public class BookingDTO {
 
 	private String bookingId;
 	private String source;
@@ -30,14 +30,14 @@ public class Booking {
 	public void setCabType(String cabType) {
 		this.cabType = cabType;
 	}
-	public Booking(String bookingId, String source, String destination, String cabType) {
+	public BookingDTO(String bookingId, String source, String destination, String cabType) {
 		super();
 		this.bookingId = bookingId;
 		this.source = source;
 		this.destination = destination;
 		this.cabType = cabType;
 	}
-	public Booking() {
+	public BookingDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

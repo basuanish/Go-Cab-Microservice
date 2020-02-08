@@ -2,18 +2,18 @@ package com.capgemini.GoCab.entity;
 
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity(name="booking")
-@Component
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class Booking {
 	
 	@Id
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private String bookingId;
 	private String source;
 	private String destination;

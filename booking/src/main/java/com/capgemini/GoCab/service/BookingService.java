@@ -1,8 +1,10 @@
 package com.capgemini.GoCab.service;
 
-import com.capgemini.GoCab.dto.Booking;
+import org.springframework.stereotype.Service;
 
+import com.capgemini.GoCab.dto.BookingDTO;
+@Service
 public interface BookingService {
 
-	public String addBooking(Booking booking);
+	public String addBooking(BookingDTO booking);
 }

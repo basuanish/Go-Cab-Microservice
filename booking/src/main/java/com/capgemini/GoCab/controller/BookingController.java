@@ -7,22 +7,24 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.capgemini.GoCab.dao.BookingDao;
+import com.capgemini.GoCab.dto.BookingDTO;
 import com.capgemini.GoCab.entity.Booking;
-import com.capgemini.GoCab.exceptions.BookingException;
 import com.capgemini.GoCab.service.BookingService;
-import com.capgemini.GoCab.constants.Constants;
 
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping(path ="/booking")
 @RestController
-@RequestMapping(path="book")
 public class BookingController {
 
 	@Autowired
 	private BookingService bookingService;
 
-	@Autowired
-	Booking booking;
+	@PostMapping(path="/add")
+	public String bookCab(@RequestBody BookingDTO booking) {
+		
+		//return "cdvj";
+		return bookingService.addBooking(booking);
+	}
 
-
-	
 }
