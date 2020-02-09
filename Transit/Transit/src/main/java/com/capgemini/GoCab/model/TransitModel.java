@@ -1,6 +1,7 @@
-package Model;
+package com.capgemini.GoCab.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -8,21 +9,23 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})   //Serialization issue
 public class TransitModel {
 	
-	private int number;
-	private String cab_type;
+	@Id
+	private String number;
+	private String cabType;
 	private String name;
 	private String status ;
-	public int getNumber() {
+	public String getNumber() {
 		return number;
 	}
-	public void setNumber(int number) {
+	public void setNumber(String number) {
 		this.number = number;
 	}
-	public String getCab_type() {
-		return cab_type;
+	
+	public String getCabType() {
+		return cabType;
 	}
-	public void setCab_type(String cab_type) {
-		this.cab_type = cab_type;
+	public void setCabType(String cabType) {
+		this.cabType = cabType;
 	}
 	public String getName() {
 		return name;
@@ -36,4 +39,7 @@ public class TransitModel {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
+	
+	
 }

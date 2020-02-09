@@ -22,8 +22,6 @@ public class Payment {
 	@Column(name="booking_id")
 	private String bookingId;
 	
-	@Column(name="payment_date")
-	private Date paymentDate;
 	
 	@Column(name="price")
 	private int price;
@@ -35,7 +33,6 @@ public class Payment {
 	public Payment(String paymentId, String bookingId, Date paymentDate, int price) {
 		this.paymentId = paymentId;
 		this.bookingId = bookingId;
-		this.paymentDate = paymentDate;
 		this.price = price;
 	}
 
@@ -53,14 +50,6 @@ public class Payment {
 
 	public void setBookingId(String bookingId) {
 		this.bookingId = bookingId;
-	}
-
-	public Date getPaymentDate() {
-		return paymentDate;
-	}
-
-	public void setPaymentDate(Date paymentDate) {
-		this.paymentDate = paymentDate;
 	}
 
 	public int getPrice() {

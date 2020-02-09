@@ -1,4 +1,4 @@
-package com.capgemini.GoCab.Transit;
+package com.capgemini.GoCab;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
