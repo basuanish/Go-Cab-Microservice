@@ -17,6 +17,7 @@ import org.springframework.web.client.RestTemplate;
 import com.capgemini.GoCab.dto.Driver;
 import com.capgemini.GoCab.dto.User;
 import com.capgemini.GoCab.service.DriverService;
+import com.google.gson.JsonObject;
 
 @CrossOrigin(origins="http://localhost:4200")
 @RequestMapping(path="/driver")
@@ -31,6 +32,7 @@ public class DriverController {
 	
 	@PostMapping(value="/add")
     public String addDriver(@RequestBody Driver driver) {
+		JsonObject dataResponse = new JsonObject();
 		User newUser = new User();
 		newUser.setUserFullName(driver.getName());
 		newUser.setUserEmailAddress(driver.getEmail());
@@ -39,10 +41,12 @@ public class DriverController {
 		newUser.setUserRole("Driver");
 		
 		String isAdded = driverService.addDriver(driver);
+		dataResponse.addProperty("success", true);
+		dataResponse.addProperty("message", isAdded);
 		//boolean isLoggedIn = false;
 		System.out.println(newUser.getUserPassword());
 		String result = restTemplate.postForObject("http://login-service/user/create", newUser,String.class);
-        return isAdded;
+        return dataResponse.toString();
     }
 	
 	@GetMapping(value="/all")
