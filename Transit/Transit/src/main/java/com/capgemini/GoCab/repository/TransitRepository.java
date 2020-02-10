@@ -12,4 +12,5 @@ import com.capgemini.GoCab.model.TransitModel;
 public interface TransitRepository extends JpaRepository<TransitModel, Long>{
 
 	List <TransitModel> findByCabTypeAndStatus (String cab_type ,String status);
+	//List <TransitModel> findFirst1ByCabTypeAndStatus 	(String cab_type ,String status) 
 }

@@ -10,6 +10,6 @@ import com.capgemini.GoCab.entity.Booking;
 @Repository
 public interface BookingDao extends JpaRepository<Booking,Integer>{
 
-	//String save(BookingDTO booking);
+	
 
 }

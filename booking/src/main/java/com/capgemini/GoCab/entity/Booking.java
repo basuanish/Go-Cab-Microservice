@@ -18,6 +18,7 @@ public class Booking {
 	private String source;
 	private String destination;
 	private String cabType;
+	private int fare;
 	
 	public Booking() {
 		
@@ -43,6 +44,14 @@ public class Booking {
 		return destination;
 	}
 
+	public int getFare() {
+		return fare;
+	}
+
+	public void setFare(int fare) {
+		this.fare = fare;
+	}
+
 	public void setDestination(String destination) {
 		this.destination = destination;
 	}
@@ -54,17 +63,5 @@ public class Booking {
 	public void setCabType(String cabType) {
 		this.cabType = cabType;
 	}
-
-	public Booking(String bookingId, String source, String destination, String cabType) {
-		super();
-		this.bookingId = bookingId;
-		this.source = source;
-		this.destination = destination;
-		this.cabType = cabType;
-	}
-
-
-
-
 
 }
