@@ -1,0 +1,17 @@
+com\aptigeeks\dto\AuthResponse.class
+com\aptigeeks\entity\Role.class
+com\aptigeeks\entity\User.class
+com\aptigeeks\exception\GlobalExceptionHandlerController.class
+com\aptigeeks\security\JwtTokenProvider.class
+com\aptigeeks\dto\LoginRequest.class
+com\aptigeeks\ZuulServerApplication.class
+com\aptigeeks\security\JwtTokenFilter.class
+com\aptigeeks\service\ILoginService.class
+com\aptigeeks\service\LoginService.class
+com\aptigeeks\exception\CustomException.class
+com\aptigeeks\security\JwtTokenFilterConfigurer.class
+com\aptigeeks\security\UserService.class
+com\aptigeeks\dto\DbUserDetails.class
+com\aptigeeks\controller\LoginController.class
+com\aptigeeks\security\WebSecurityConfig.class
+com\aptigeekss\repository\UserRepository.class
