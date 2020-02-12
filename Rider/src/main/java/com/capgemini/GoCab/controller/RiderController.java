@@ -16,6 +16,7 @@ import com.capgemini.GoCab.dto.LoginUser;
 import com.capgemini.GoCab.dto.Rider;
 import com.capgemini.GoCab.dto.User;
 import com.capgemini.GoCab.service.RiderService;
+import com.google.gson.JsonObject;
 
 
 @CrossOrigin(origins="http://localhost:4200")
@@ -33,6 +34,7 @@ public class RiderController {
     public String addDriver(@RequestBody Rider rider) {
 		
 		User newUser = new User();
+		JsonObject dataResponse = new JsonObject();
 		LoginUser loginUser = new LoginUser();
 		newUser.setUserFullName(rider.getName());
 		newUser.setUserEmailAddress(rider.getEmail());
@@ -40,6 +42,8 @@ public class RiderController {
 		newUser.setUserPassword(rider.getPassword());
 		newUser.setUserRole("Rider");
         String isAdded = riderService.addRider(rider);
+        dataResponse.addProperty("success", true);
+		dataResponse.addProperty("message", isAdded);
         loginUser.setEmail(rider.getEmail());
         loginUser.setName(rider.getName());
         loginUser.setPassword(rider.getPassword());
@@ -47,6 +51,6 @@ public class RiderController {
         Role_Set.add("Rider");
         loginUser.setRole(Role_Set);
         String result = restTemplate.postForObject("http://auth-server/api/create", loginUser,String.class);
-        return isAdded;
+        return dataResponse.toString();
     }
 }
