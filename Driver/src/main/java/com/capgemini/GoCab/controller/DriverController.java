@@ -1,7 +1,9 @@
 package com.capgemini.GoCab.controller;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.capgemini.GoCab.dto.Driver;
+import com.capgemini.GoCab.dto.LoginUser;
 import com.capgemini.GoCab.dto.User;
 import com.capgemini.GoCab.service.DriverService;
 import com.google.gson.JsonObject;
@@ -34,6 +37,7 @@ public class DriverController {
     public String addDriver(@RequestBody Driver driver) {
 		JsonObject dataResponse = new JsonObject();
 		User newUser = new User();
+		LoginUser loginUser = new LoginUser();
 		newUser.setUserFullName(driver.getName());
 		newUser.setUserEmailAddress(driver.getEmail());
 		newUser.setUserMobileNo(driver.getPhoneNumber());
@@ -44,8 +48,13 @@ public class DriverController {
 		dataResponse.addProperty("success", true);
 		dataResponse.addProperty("message", isAdded);
 		//boolean isLoggedIn = false;
-		System.out.println(newUser.getUserPassword());
-		String result = restTemplate.postForObject("http://login-service/user/create", newUser,String.class);
+		loginUser.setEmail(driver.getEmail());
+        loginUser.setName(driver.getName());
+        loginUser.setPassword(driver.getPassword());
+        Set<String> Role_Set = new HashSet<String>(); 
+        Role_Set.add("Driver");
+        loginUser.setRole(Role_Set);
+		String result = restTemplate.postForObject("http://login-service/user/create", loginUser,String.class);
         return dataResponse.toString();
     }
 	
