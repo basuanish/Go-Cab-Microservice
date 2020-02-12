@@ -22,7 +22,6 @@ public class BookingServiceImpl implements BookingService{
 		
 		Booking bookingEntity=new Booking();
 		bookingEntity.setBookingId(booking.getBookingId());
-		bookingEntity.setCabType(booking.getCabType());
 		bookingEntity.setDestination(booking.getDestination());
 		bookingEntity.setSource(booking.getSource());
 		bookingEntity.setFare(calculateFare(booking));
@@ -46,15 +45,15 @@ public class BookingServiceImpl implements BookingService{
 		}
 		else if(arraylist.get(0).equalsIgnoreCase("MajesticSilkBoard"))
 		{
-			return 289;
+			return 589;
 		}
 		else if(arraylist.get(0).equalsIgnoreCase("KIAWhitefield"))
 		{
-			return 789;
+			return 689;
 		}
 		else if(arraylist.get(0).equalsIgnoreCase("KIAKoramangla"))
 		{
-			return 789;
+			return 788;
 		}
 		else if(arraylist.get(0).equalsIgnoreCase("KIASilkBoard"))
 		{
@@ -62,18 +61,36 @@ public class BookingServiceImpl implements BookingService{
 		}
 		else if(arraylist.get(0).equalsIgnoreCase("WonderlaWhiteField"))
 		{
-			return 745;
+			return 945;
 		}
 		else if(arraylist.get(0).equalsIgnoreCase("WonderlaSilkboard"))
 		{
-			return 509;
+			return 222;
 		}
 		else 
 		{
-			return 477;
+			return 333;
 		}	
 		
 		
 	}
+	
+	@Override
+	public Booking generateFare(Booking booking) {
+		Booking bookingEntity = new Booking();
+		try {
+			String src = booking.getSource();
+			String dest = booking.getDestination();
+			bookingEntity = bookingDao.findBySourceAndDestination(src, dest);
+			int fare = bookingEntity.getFare();
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return bookingEntity;
+		
+	}
+
+
 
 }
