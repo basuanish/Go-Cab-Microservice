@@ -5,7 +5,7 @@ public class BookingDTO {
 	private String bookingId;
 	private String source;
 	private String destination;
-	private String cabType;
+	//private String cabType;
 	private int fare;
 	public String getBookingId() {
 		return bookingId;
@@ -31,12 +31,12 @@ public class BookingDTO {
 	public void setDestination(String destination) {
 		this.destination = destination;
 	}
-	public String getCabType() {
-		return cabType;
-	}
-	public void setCabType(String cabType) {
-		this.cabType = cabType;
-	}
+//	public String getCabType() {
+//		return cabType;
+//	}
+//	public void setCabType(String cabType) {
+//		this.cabType = cabType;
+//	}
 	
 	public BookingDTO() {
 		super();
@@ -47,8 +47,13 @@ public class BookingDTO {
 		this.bookingId = bookingId;
 		this.source = source;
 		this.destination = destination;
-		this.cabType = cabType;
+		//this.cabType = cabType;
 		this.fare = fare;
+	}
+	@Override
+	public String toString() {
+		return "BookingDTO [source=" + source + ", destination=" + destination + ", cabType=" + ", fare="
+				+ fare + "]";
 	}
 	
 	
