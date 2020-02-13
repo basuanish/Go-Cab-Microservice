@@ -3,6 +3,7 @@ package com.capgemini.GoCab.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import com.capgemini.GoCab.dto.LoginRequest;
 import com.capgemini.GoCab.dto.LoginUser;
 import com.capgemini.GoCab.exception.CustomException;
 import com.capgemini.GoCab.service.ILoginService;
+import com.google.gson.JsonObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,23 +27,38 @@ public class LoginController {
     @Autowired
     private ILoginService iLoginService;
 
-    
-    @PostMapping("/signin")
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(path="/signin",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest loginRequest) {
+    public String login(@RequestBody LoginRequest loginRequest) {
+    	JsonObject dataResponse = new JsonObject();
+    	try {
         String token = iLoginService.login(loginRequest.getUsername(),loginRequest.getPassword());
-        HttpHeaders headers = new HttpHeaders();
-        List<String> headerlist = new ArrayList<>();
-        List<String> exposeList = new ArrayList<>();
-        headerlist.add("Content-Type");
-        headerlist.add(" Accept");
-        headerlist.add("X-Requested-With");
-        headerlist.add("Authorization");
-        headers.setAccessControlAllowHeaders(headerlist);
-        exposeList.add("Authorization");
-        headers.setAccessControlExposeHeaders(exposeList);
-        headers.set("Authorization", token);
-        return new ResponseEntity<AuthResponse>(new AuthResponse(token), headers, HttpStatus.CREATED);
+//        HttpHeaders headers = new HttpHeaders();
+//        List<String> headerlist = new ArrayList<>();
+//        List<String> exposeList = new ArrayList<>();
+//        headerlist.add("Content-Type");
+//        headerlist.add(" Accept");
+//        headerlist.add("X-Requested-With");
+//        headerlist.add("Authorization");
+//        headers.setAccessControlAllowHeaders(headerlist);
+//        exposeList.add("Authorization");
+//        headers.setAccessControlExposeHeaders(exposeList);
+//        headers.set("Authorization", token);
+        //AuthResponse success =new AuthResponse("Logged in"); 
+        dataResponse.addProperty("success", true);
+		dataResponse.addProperty("message", "Login successful");
+		dataResponse.addProperty("accessToken", token);
+    	}
+    	catch(CustomException e) {
+    		dataResponse.addProperty("success", false);
+			dataResponse.addProperty("message", e.getMessage());
+			dataResponse.addProperty("accessToken", false);;
+    	//return new ResponseEntity<AuthResponse>(new AuthResponse(e.getMessage()),HttpStatus.UNAUTHORIZED);
+//    		return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+//    				.body(e.getMessage());
+    	}
+    	return dataResponse.toString();
     }
     
     @PostMapping(value="/create")
