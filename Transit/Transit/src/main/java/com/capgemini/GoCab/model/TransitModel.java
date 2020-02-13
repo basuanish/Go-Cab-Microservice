@@ -10,17 +10,18 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class TransitModel {
 	
 	@Id
-	private String number;
+	private String phoneNumber;
 	private String cabType;
 	private String name;
 	private String status ;
-	public String getNumber() {
-		return number;
-	}
-	public void setNumber(String number) {
-		this.number = number;
-	}
 	
+	
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 	public String getCabType() {
 		return cabType;
 	}
