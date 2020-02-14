@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,7 +55,7 @@ public class DriverController {
         Set<String> Role_Set = new HashSet<String>(); 
         Role_Set.add("Driver");
         loginUser.setRole(Role_Set);
-		String result = restTemplate.postForObject("http://auth-server/api/create", loginUser,String.class);
+		String result = restTemplate.postForObject("http://auth-service/api/create", loginUser,String.class);
         return dataResponse.toString();
     }
 	
@@ -64,5 +66,10 @@ public class DriverController {
 		return all;
 		
 	}
+	
+	@DeleteMapping(path ={"/{phoneNumber}"})
+    public boolean delete(@PathVariable("phoneNumber") String phoneNumber) {
+        return driverService.delete(phoneNumber);
+    }
 
 }

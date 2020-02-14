@@ -47,6 +47,30 @@ public class DriverServiceImpl implements DriverService {
 		}
 		return all;
 	}
-
+	
+	@Override
+    public boolean delete(String phoneNumber) {
+		DriverEntity tempEntity = null;
+		List<DriverEntity> allEntity = new ArrayList<DriverEntity>();
+		
+		allEntity = driverDAO.findAll();
+		
+		for (DriverEntity entity : allEntity) {
+			if(entity.getPhoneNumber().equals(phoneNumber)) {
+				System.out.println(phoneNumber);
+				tempEntity = entity;
+				//break;
+			}
+		}
+		
+		boolean deleteSuccess = false;
+		if(tempEntity != null) {
+			driverDAO.delete(tempEntity);
+			deleteSuccess = true;
+		}
+		
+		return deleteSuccess;
+    }
+	
 }
 	

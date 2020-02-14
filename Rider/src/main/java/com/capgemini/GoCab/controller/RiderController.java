@@ -50,7 +50,7 @@ public class RiderController {
         Set<String> Role_Set = new HashSet<String>(); 
         Role_Set.add("Rider");
         loginUser.setRole(Role_Set);
-        String result = restTemplate.postForObject("http://auth-server/api/create", loginUser,String.class);
+        String result = restTemplate.postForObject("http://auth-service/api/create", loginUser,String.class);
         return dataResponse.toString();
     }
 }

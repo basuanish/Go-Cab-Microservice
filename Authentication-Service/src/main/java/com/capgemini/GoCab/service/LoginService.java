@@ -35,7 +35,7 @@ public class LoginService implements ILoginService
 //    private JwtTokenRepository jwtTokenRepository;
 
     @Override
-    public String login(String username, String password) {
+    public String login(String username, String password) throws CustomException{
     	String token = null;
         try {
 //        	System.out.println("hi");
@@ -43,20 +43,28 @@ public class LoginService implements ILoginService
 //                    password));
 //            System.out.println("Helllo");
             User user = userRepository.findByEmail(username);
+            System.out.println(user);
             if (user == null) {
-                throw new com.capgemini.GoCab.exception.CustomException("Invalid username or password.Hi", HttpStatus.UNAUTHORIZED);
+                throw new com.capgemini.GoCab.exception.CustomException("Invalid username or password.", HttpStatus.UNAUTHORIZED);
             }
+            System.out.println(passwordEncoder.matches(password,user.getPassword()));
             if(passwordEncoder.matches(password,user.getPassword())) {
             //NOTE: normally we dont need to add "ROLE_" prefix. Spring does automatically for us.
             //Since we are using custom token using JWT we should add ROLE_ prefix
+            	System.out.println("here I am");
             token =  jwtTokenProvider.createToken(username, user.getRole().stream()
                     .map((String role)-> "ROLE_"+role).filter(Objects::nonNull).collect(Collectors.toList()));
-           
+            
             }
-            return token;
-        } catch (AuthenticationException e) {
+            else {
+            	throw new Exception();
+            }
+            //return token;
+        } catch (Exception e) {
+        	System.out.println("here");
             throw new CustomException("Invalid username or password.", HttpStatus.UNAUTHORIZED);
         }
+        return token;
     }
 
 //    @Override
