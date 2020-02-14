@@ -5,7 +5,7 @@ public class BookingDTO {
 	private String bookingId;
 	private String source;
 	private String destination;
-	//private String cabType;
+	private String cabType;
 	private int fare;
 	public String getBookingId() {
 		return bookingId;
@@ -31,12 +31,12 @@ public class BookingDTO {
 	public void setDestination(String destination) {
 		this.destination = destination;
 	}
-//	public String getCabType() {
-//		return cabType;
-//	}
-//	public void setCabType(String cabType) {
-//		this.cabType = cabType;
-//	}
+	public String getCabType() {
+		return cabType;
+	}
+	public void setCabType(String cabType) {
+		this.cabType = cabType;
+	}
 	
 	public BookingDTO() {
 		super();

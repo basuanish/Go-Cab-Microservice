@@ -1,5 +1,8 @@
 package com.capgemini.GoCab.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,5 +43,14 @@ public class BookingController {
 		return bookingNew;
 		
 	}
+	
+	
+	@GetMapping(value="/getBookings")
+	
+		public List<Booking> getAllBookings() {
+		
+		return bookingService.getBookings();
+		
+		}
 
-}
+   }

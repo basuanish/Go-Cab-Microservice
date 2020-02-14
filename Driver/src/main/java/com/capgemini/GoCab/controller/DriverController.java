@@ -47,14 +47,13 @@ public class DriverController {
 		String isAdded = driverService.addDriver(driver);
 		dataResponse.addProperty("success", true);
 		dataResponse.addProperty("message", isAdded);
-		//boolean isLoggedIn = false;
 		loginUser.setEmail(driver.getEmail());
         loginUser.setName(driver.getName());
         loginUser.setPassword(driver.getPassword());
         Set<String> Role_Set = new HashSet<String>(); 
         Role_Set.add("Driver");
         loginUser.setRole(Role_Set);
-		String result = restTemplate.postForObject("http://login-service/user/create", loginUser,String.class);
+		String result = restTemplate.postForObject("http://auth-server/api/create", loginUser,String.class);
         return dataResponse.toString();
     }
 	

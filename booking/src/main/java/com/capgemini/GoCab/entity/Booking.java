@@ -17,7 +17,7 @@ public class Booking {
 	private String bookingId;
 	private String source;
 	private String destination;
-	//private String cabType;
+	private String cabType;
 	private int fare;
 	
 	public Booking() {
@@ -56,12 +56,12 @@ public class Booking {
 		this.destination = destination;
 	}
 
-//	public String getCabType() {
-//		return cabType;
-//	}
+	public String getCabType() {
+		return cabType;
+	}
 
-//	public void setCabType(String cabType) {
-//		this.cabType = cabType;
-//	}
+	public void setCabType(String cabType) {
+		this.cabType = cabType;
+	}
 
 }

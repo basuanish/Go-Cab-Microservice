@@ -1,9 +1,7 @@
 package com.capgemini.GoCab.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,68 +11,52 @@ import com.capgemini.GoCab.dto.BookingDTO;
 import com.capgemini.GoCab.entity.Booking;
 
 @Service
-public class BookingServiceImpl implements BookingService{
+public class BookingServiceImpl implements BookingService {
 
 	@Autowired
 	BookingDao bookingDao;
+
 	@Override
 	public String addBooking(BookingDTO booking) {
-		
-		Booking bookingEntity=new Booking();
+
+		Booking bookingEntity = new Booking();
 		bookingEntity.setBookingId(booking.getBookingId());
 		bookingEntity.setDestination(booking.getDestination());
 		bookingEntity.setSource(booking.getSource());
+		bookingEntity.setCabType(booking.getCabType());
 		bookingEntity.setFare(calculateFare(booking));
+	
 		bookingDao.save(bookingEntity);
 		return "booking done successfully";
 	}
-	
-	public int calculateFare(BookingDTO booking)
-	{
-		String source=booking.getSource();
-		String destination=booking.getDestination();
-		List<String> arraylist=new ArrayList<>();
-		arraylist.add(source+destination);
-		if(arraylist.get(0).equalsIgnoreCase("MajesticWhiteField"))
-		{
+
+	public int calculateFare(BookingDTO booking) {
+		String source = booking.getSource();
+		String destination = booking.getDestination();
+		List<String> arraylist = new ArrayList<>();
+		arraylist.add(source + destination);
+		if (arraylist.get(0).equalsIgnoreCase("MajesticWhiteField")) {
 			return 305;
-		}
-		else if(arraylist.get(0).equalsIgnoreCase("MajesticKoramangla"))
-		{
+		} else if (arraylist.get(0).equalsIgnoreCase("MajesticKoramangla")) {
 			return 477;
-		}
-		else if(arraylist.get(0).equalsIgnoreCase("MajesticSilkBoard"))
-		{
+		} else if (arraylist.get(0).equalsIgnoreCase("MajesticSilk Board")) {
 			return 589;
-		}
-		else if(arraylist.get(0).equalsIgnoreCase("KIAWhitefield"))
-		{
+		} else if (arraylist.get(0).equalsIgnoreCase("KIAWhitefield")) {
 			return 689;
-		}
-		else if(arraylist.get(0).equalsIgnoreCase("KIAKoramangla"))
-		{
+		} else if (arraylist.get(0).equalsIgnoreCase("KIAKoramangla")) {
 			return 788;
-		}
-		else if(arraylist.get(0).equalsIgnoreCase("KIASilkBoard"))
-		{
+		} else if (arraylist.get(0).equalsIgnoreCase("KIASilk Board")) {
 			return 898;
-		}
-		else if(arraylist.get(0).equalsIgnoreCase("WonderlaWhiteField"))
-		{
+		} else if (arraylist.get(0).equalsIgnoreCase("WonderlaWhiteField")) {
 			return 945;
-		}
-		else if(arraylist.get(0).equalsIgnoreCase("WonderlaSilkboard"))
-		{
+		} else if (arraylist.get(0).equalsIgnoreCase("WonderlaSilk board")) {
 			return 222;
-		}
-		else 
-		{
+		} else {
 			return 333;
-		}	
-		
-		
+		}
+
 	}
-	
+
 	@Override
 	public Booking generateFare(Booking booking) {
 		Booking bookingEntity = new Booking();
@@ -83,14 +65,29 @@ public class BookingServiceImpl implements BookingService{
 			String dest = booking.getDestination();
 			bookingEntity = bookingDao.findBySourceAndDestination(src, dest);
 			int fare = bookingEntity.getFare();
-		}catch(Exception e) {
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		
+
 		return bookingEntity;
-		
+
 	}
 
+	public List<Booking> getBookings() {
+		//List<Booking> getAllBookings = new ArrayList<Booking>();
+		return bookingDao.findAll();
+//		List<BookingDTO> getBookings = new ArrayList<BookingDTO>();
+//		BookingDTO bookingDto = new BookingDTO();
+//		for (Booking booking : getAllBookings) {
+//			bookingDto.setBookingId(booking.getBookingId());
+//			bookingDto.setDestination(booking.getDestination());
+//			bookingDto.setSource(booking.getSource());
+//			bookingDto.setFare(booking.getFare());
+//			bookingDto.setCabType(booking.getCabType());
+//			getBookings.add(bookingDto);
+//		}
+//		return getBookings;
 
-
+	}
 }
+	
