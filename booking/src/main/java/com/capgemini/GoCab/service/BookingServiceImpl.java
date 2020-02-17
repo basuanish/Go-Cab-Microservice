@@ -25,7 +25,7 @@ public class BookingServiceImpl implements BookingService {
 		bookingEntity.setSource(booking.getSource());
 		bookingEntity.setCabType(booking.getCabType());
 		bookingEntity.setFare(calculateFare(booking));
-	
+
 		bookingDao.save(bookingEntity);
 		return "booking done successfully";
 	}
@@ -65,11 +65,9 @@ public class BookingServiceImpl implements BookingService {
 			String src = booking.getSource();
 			String dest = booking.getDestination();
 			bookingEntity = bookingDao.findBySourceAndDestination(src, dest);
-			if(!bookingEntity.isEmpty()) {
+			if (!bookingEntity.isEmpty()) {
 				bookingEnt = bookingEntity.get(0);
 			}
-//		bookingEntity = bookingDao.findFirst1BySourceAndDestination(src, dest);
-			int fare = bookingEnt.getFare();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -79,19 +77,7 @@ public class BookingServiceImpl implements BookingService {
 	}
 
 	public List<Booking> getBookings() {
-		//List<Booking> getAllBookings = new ArrayList<Booking>();
 		return bookingDao.findAll();
-//		List<BookingDTO> getBookings = new ArrayList<BookingDTO>();
-//		BookingDTO bookingDto = new BookingDTO();
-//		for (Booking booking : getAllBookings) {
-//			bookingDto.setBookingId(booking.getBookingId());
-//			bookingDto.setDestination(booking.getDestination());
-//			bookingDto.setSource(booking.getSource());
-//			bookingDto.setFare(booking.getFare());
-//			bookingDto.setCabType(booking.getCabType());
-//			getBookings.add(bookingDto);
-//		}
-//		return getBookings;
 
 	}
 }

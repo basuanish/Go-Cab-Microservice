@@ -12,8 +12,6 @@ import com.capgemini.GoCab.entity.Booking;
 public interface BookingDao extends JpaRepository<Booking,Integer>{
 
 	public List<Booking> findBySourceAndDestination(String source, String destination);
-
-	public Booking findFirst1BySourceAndDestination(String src, String dest);
 	
 
 }
