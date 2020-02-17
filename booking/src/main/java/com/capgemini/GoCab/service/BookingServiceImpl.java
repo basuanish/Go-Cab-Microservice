@@ -59,17 +59,22 @@ public class BookingServiceImpl implements BookingService {
 
 	@Override
 	public Booking generateFare(Booking booking) {
-		Booking bookingEntity = new Booking();
+		List<Booking> bookingEntity;
+		Booking bookingEnt = new Booking();
 		try {
 			String src = booking.getSource();
 			String dest = booking.getDestination();
 			bookingEntity = bookingDao.findBySourceAndDestination(src, dest);
-			int fare = bookingEntity.getFare();
+			if(!bookingEntity.isEmpty()) {
+				bookingEnt = bookingEntity.get(0);
+			}
+//		bookingEntity = bookingDao.findFirst1BySourceAndDestination(src, dest);
+			int fare = bookingEnt.getFare();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 
-		return bookingEntity;
+		return bookingEnt;
 
 	}
 
