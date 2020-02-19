@@ -23,6 +23,7 @@ import java.util.List;
 public class JwtTokenProvider {
     private static final String AUTH="auth";
     private static final String AUTHORIZATION="Authorization";
+    private static final String NAME="name";
     private String secretKey="secret-key";
     private long validityInMilliseconds = 3600000; // 1h
 
@@ -37,10 +38,11 @@ public class JwtTokenProvider {
         secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
     }
 
-    public String createToken(String username, List<String> roles) {
+    public String createToken(String username, List<String> roles,String name) {
 
         Claims claims = Jwts.claims().setSubject(username);
         claims.put(AUTH,roles);
+        claims.put(NAME, name);
 
         Date now = new Date();
         Date validity = new Date(now.getTime() + validityInMilliseconds);
@@ -87,6 +89,10 @@ public class JwtTokenProvider {
 
     public String getUsername(String token) {
         return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
+    }
+    
+    public String getName(String token) {
+    	return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().get(NAME, String.class);
     }
     public Authentication getAuthentication(String token) {
         //using data base: uncomment when you want to fetch data from data base
