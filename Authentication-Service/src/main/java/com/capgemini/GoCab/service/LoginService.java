@@ -38,10 +38,6 @@ public class LoginService implements ILoginService
     public String login(String username, String password) throws CustomException{
     	String token = null;
         try {
-//        	System.out.println("hi");
-//            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username,
-//                    password));
-//            System.out.println("Helllo");
             User user = userRepository.findByEmail(username);
             System.out.println(user);
             if (user == null) {
@@ -51,9 +47,9 @@ public class LoginService implements ILoginService
             if(passwordEncoder.matches(password,user.getPassword())) {
             //NOTE: normally we dont need to add "ROLE_" prefix. Spring does automatically for us.
             //Since we are using custom token using JWT we should add ROLE_ prefix
-            	System.out.println("here I am");
+
             token =  jwtTokenProvider.createToken(username, user.getRole().stream()
-                    .map((String role)-> "ROLE_"+role).filter(Objects::nonNull).collect(Collectors.toList()));
+                    .map((String role)-> "ROLE_"+role).filter(Objects::nonNull).collect(Collectors.toList()),user.getName());
             
             }
             else {
@@ -61,7 +57,6 @@ public class LoginService implements ILoginService
             }
             //return token;
         } catch (Exception e) {
-        	System.out.println("here");
             throw new CustomException("Invalid username or password.", HttpStatus.UNAUTHORIZED);
         }
         return token;
@@ -88,7 +83,8 @@ public class LoginService implements ILoginService
     public String createNewToken(String token) {
         String username = jwtTokenProvider.getUsername(token);
         List<String>roleList = jwtTokenProvider.getRoleList(token);
-        String newToken =  jwtTokenProvider.createToken(username,roleList);
+        String name = jwtTokenProvider.getName(token);
+        String newToken =  jwtTokenProvider.createToken(username,roleList,name);
         return newToken;
     }
 

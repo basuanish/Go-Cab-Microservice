@@ -1,6 +1,6 @@
 package com.capgemini.GoCab.controller;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,5 +52,13 @@ public class BookingController {
 		return bookingService.getBookings();
 		
 		}
+	
+	@GetMapping(value="/getRiders")
+	
+		public Booking getRider()
+		{
+			return bookingService.getRider();
+		}
+	
 
    }
