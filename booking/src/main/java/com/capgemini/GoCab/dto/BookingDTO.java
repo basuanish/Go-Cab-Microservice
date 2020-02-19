@@ -7,6 +7,14 @@ public class BookingDTO {
 	private String destination;
 	private String cabType;
 	private int fare;
+	private String name;
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getBookingId() {
 		return bookingId;
 	}
@@ -42,13 +50,15 @@ public class BookingDTO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public BookingDTO(String bookingId, String source, String destination, String cabType, int fare) {
+	
+	public BookingDTO(String bookingId, String source, String destination, String cabType, int fare, String name) {
 		super();
 		this.bookingId = bookingId;
 		this.source = source;
 		this.destination = destination;
-		//this.cabType = cabType;
+		this.cabType = cabType;
 		this.fare = fare;
+		this.name = name;
 	}
 	@Override
 	public String toString() {

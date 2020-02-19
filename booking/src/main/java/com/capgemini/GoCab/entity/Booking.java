@@ -19,10 +19,21 @@ public class Booking {
 	private String destination;
 	private String cabType;
 	private int fare;
+	private String name;
 	
 	public Booking() {
 		
 	}
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 
 	public String getBookingId() {
 		return bookingId;

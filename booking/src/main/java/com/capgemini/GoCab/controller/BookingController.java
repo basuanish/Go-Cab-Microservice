@@ -52,5 +52,13 @@ public class BookingController {
 		return bookingService.getBookings();
 		
 		}
+	
+	@GetMapping(value="/getRiders")
+	
+		public Booking getRider()
+		{
+			return bookingService.getRider();
+		}
+	
 
    }

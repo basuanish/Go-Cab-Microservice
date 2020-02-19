@@ -25,6 +25,7 @@ public class BookingServiceImpl implements BookingService {
 		bookingEntity.setSource(booking.getSource());
 		bookingEntity.setCabType(booking.getCabType());
 		bookingEntity.setFare(calculateFare(booking));
+		bookingEntity.setName(booking.getName());
 
 		bookingDao.save(bookingEntity);
 		return "booking done successfully";
@@ -79,6 +80,15 @@ public class BookingServiceImpl implements BookingService {
 	public List<Booking> getBookings() {
 		return bookingDao.findAll();
 
+	}
+	
+	public Booking getRider()
+	{
+		List<Booking> allRiders= new ArrayList<Booking>();
+		allRiders=bookingDao.findAll();
+		Booking booking=new Booking();
+		booking=allRiders.get(0);
+		return booking;
 	}
 }
 	
