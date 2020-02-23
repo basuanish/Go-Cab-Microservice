@@ -16,4 +16,6 @@ public interface BookingService {
 	public List<Booking> getBookings();
 	
 	public Booking getRider();
+	
+	
 }
