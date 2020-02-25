@@ -14,7 +14,7 @@ import com.capgemini.GoCab.model.TransitModel;
 import com.capgemini.GoCab.repository.TransitRepository;
 
 @CrossOrigin(origins="http://localhost:4200")
-@RequestMapping(path="/transit")
+//@RequestMapping(path="/transit")
 @RestController
 public class TransitController {
 	

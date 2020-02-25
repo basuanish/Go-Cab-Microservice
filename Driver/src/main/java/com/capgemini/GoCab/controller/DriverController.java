@@ -25,7 +25,7 @@ import com.capgemini.GoCab.service.DriverService;
 import com.google.gson.JsonObject;
 
 @CrossOrigin(origins="http://localhost:4200")
-@RequestMapping(path="/driver")
+//@RequestMapping(path="/driver")
 @RestController
 public class DriverController {
 	
@@ -55,7 +55,7 @@ public class DriverController {
         Set<String> Role_Set = new HashSet<String>(); 
         Role_Set.add("Driver");
         loginUser.setRole(Role_Set);
-		String result = restTemplate.postForObject("http://auth-service/api/create", loginUser,String.class);
+		String result = restTemplate.postForObject("http://API-Gateway/api/create", loginUser,String.class);
         return dataResponse.toString();
     }
 	

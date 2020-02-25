@@ -5,15 +5,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 //import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 //import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 //@EnableEurekaServer
-//@EnableZuulProxy
+@EnableZuulProxy
 @EnableEurekaClient
 @SpringBootApplication
-public class AuthenticationServiceApplication {
+public class APIGatewayApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AuthenticationServiceApplication.class, args);
+		SpringApplication.run(APIGatewayApplication.class, args);
 	}
 
 }

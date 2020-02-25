@@ -16,8 +16,9 @@ import com.capgemini.GoCab.dto.BookingDTO;
 import com.capgemini.GoCab.entity.Booking;
 import com.capgemini.GoCab.service.BookingService;
 
+
+//@RequestMapping(path ="/booking")
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping(path ="/booking")
 @RestController
 public class BookingController {
 
@@ -35,8 +36,7 @@ public class BookingController {
 	public Booking getFare(@RequestBody Booking booking) {
 		Booking bookingNew=new Booking();
 		try {
-			System.out.println("inside controller");
-			System.out.println(booking);
+			
 			bookingNew =  bookingService.generateFare(booking);
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
@@ -49,7 +49,7 @@ public class BookingController {
 	@GetMapping(value="/getBookings")
 	
 		public List<Booking> getAllBookings() {
-		
+		System.out.println("Inside");
 		return bookingService.getBookings();
 		
 		}
